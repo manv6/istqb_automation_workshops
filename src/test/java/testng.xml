@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Appium-android-Demo">
+
+	<parameter name="app" value="/home/vagrant/Downloads/loginApp.apk" />
+	<parameter name="deviceName" value="192.168.56.101:5555" />
+	<parameter name="platformVersion" value="6.0" />
+	<parameter name="appiumUrl" value="http://127.0.0.1:4723/wd/hub" />
+
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+	</listeners>
+
+	<test name="Web Automation" preserve-order="true">
+        <classes>
+			<class name="com.appium.android.SignIn_Web_Facebook" />
+		</classes>
+	</test>
+</suite>
