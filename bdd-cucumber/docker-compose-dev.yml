@@ -69,15 +69,3 @@ services:
     expose:
      - "4444"
      - "5900"
-
-#   browserstack:
-#    image: andon/browserstack
-#    entrypoint: /usr/local/bin/BrowserStackLocal --key qcGwaiyQpFFibmBoyEp3 --enable-logging-for-api --verbose 3
-#    links:
-##      - zuul
-#  turbine:
-#    build: turbineserver
-#    links:
-#     - eureka
-#    ports:
-#      - "8989:8989"
