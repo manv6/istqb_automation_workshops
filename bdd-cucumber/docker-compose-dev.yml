@@ -1,0 +1,83 @@
+version: '2'
+services:
+  eureka:
+    build: git/microservice-demo-eureka-server-copy
+    image: eureka
+    expose:
+      - "8761"
+  customer:
+    build: git/microservice-demo-customer-copy
+    image: customer
+    links:
+     - eureka
+    ports:
+      - "9001:8080"
+    expose:
+      - "8080"
+  catalog:
+    build: git/microservice-demo-catalog-copy
+    image: catalog
+    links:
+     - eureka
+    ports:
+     - "9002:8080"
+    expose:
+      - "8080"
+  order:
+    build: git/microservice-demo-order-copy
+    image: order
+    links:
+     - eureka
+    ports:
+     - "9003:8080"
+    expose:
+      - "8080"
+  zuul:
+    build: git/microservice-demo-zuul-server-copy
+    image: zuul
+    links:
+     - eureka
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+  demodb: 
+    image: mongo:3.5.5
+    ports:
+     - "27017:27017"
+    expose: 
+     - "27017"
+  mariadb:
+    image: mariadb:10.3
+    environment:
+      - MYSQL_ROOT_PASSWORD=ruutti-access
+    ports:
+      - "3309:3306"
+  chrome_standalone_grid:
+    image: selenium/standalone-chrome-debug:3.8.1
+    ports:
+     - "4445:4444"
+     - "5901:5900"
+    expose:
+     - "4445"
+     - "5901"
+  firefox_standalonegrid:
+    image: selenium/standalone-firefox-debug
+    ports:
+     - "4444:4444"
+     - "5900:5900"
+    expose:
+     - "4444"
+     - "5900"
+
+#   browserstack:
+#    image: andon/browserstack
+#    entrypoint: /usr/local/bin/BrowserStackLocal --key qcGwaiyQpFFibmBoyEp3 --enable-logging-for-api --verbose 3
+#    links:
+##      - zuul
+#  turbine:
+#    build: turbineserver
+#    links:
+#     - eureka
+#    ports:
+#      - "8989:8989"
