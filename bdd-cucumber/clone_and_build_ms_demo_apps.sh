@@ -13,3 +13,4 @@ cd microservice-demo-zuul-server-copy/ && mvn clean install && cd ..
 cd microservice-demo-eureka-server-copy/ && mvn clean install && cd ..
 cd microservice-demo-customer-copy/ && mvn clean install && cd ..
 cd microservice-demo-catalog-copy/ && mvn clean install && cd ..
+cd ..
